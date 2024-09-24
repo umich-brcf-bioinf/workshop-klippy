@@ -40,8 +40,8 @@ function getUriOcticonClippy(klippyColor, klippyOpacity) {
 }
 
 function initKlippy(handSide, headSide, klippyColor, klippyOpacity, tooltipLabel, tooltipLabelSucceed) {
-  icon_size_factor = 2 //multiply this by parent padding to size icon
-  icon_padding = '5px'
+  var icon_size_factor = 2.8; //multiply this by parent padding to size icon
+  var icon_padding = '5px';
   
   document.addEventListener("DOMContentLoaded", function() {
     var image = getUriOcticonClippy(klippyColor, klippyOpacity);
