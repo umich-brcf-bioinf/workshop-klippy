@@ -40,7 +40,7 @@ function getUriOcticonClippy(klippyColor, klippyOpacity) {
 }
 
 function initKlippy(handSide, headSide, klippyColor, klippyOpacity, tooltipLabel, tooltipLabelSucceed) {
-  var icon_size_factor = 2.8; //multiply this by parent padding to size icon
+  var icon_size = '22px'; 
   var icon_padding = '5px';
   
   document.addEventListener("DOMContentLoaded", function() {
@@ -57,12 +57,13 @@ function initKlippy(handSide, headSide, klippyColor, klippyOpacity, tooltipLabel
     var klippiesCollection = document.getElementsByClassName("btn-klippy");
 
     function autoSize(klippy) {
-      var klippyParent = klippy.parentElement;
-      var paddingParent = window.getComputedStyle(klippyParent).getPropertyValue('padding-' + handSide);
       var icon = klippy.querySelector('.octicon');
-      icon.style.width = paddingParent * icon_size_factor;
-      icon.style.verticalAlign = headSide;
+      //var klippyParent = klippy.parentElement;
+      //var paddingParent = window.getComputedStyle(klippyParent).getPropertyValue('padding-' + handSide);
+      //icon.style.width = paddingParent * icon_size_factor;
+      icon.style.width = icon_size
       klippy.style.padding = icon_padding
+      icon.style.verticalAlign = headSide;
       if (handSide === 'right') {
         klippy.style.right = '0';
         klippy.className += ' tooltipped-w';
