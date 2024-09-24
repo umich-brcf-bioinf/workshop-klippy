@@ -40,6 +40,9 @@ function getUriOcticonClippy(klippyColor, klippyOpacity) {
 }
 
 function initKlippy(handSide, headSide, klippyColor, klippyOpacity, tooltipLabel, tooltipLabelSucceed) {
+  icon_size_factor = 2 //multiply this by parent padding to size icon
+  icon_padding = '5px'
+  
   document.addEventListener("DOMContentLoaded", function() {
     var image = getUriOcticonClippy(klippyColor, klippyOpacity);
     var klippyButton = "<button type='button' class='btn-klippy tooltipped tooltipped-no-delay' aria-label='" + tooltipLabel + "' onfocusout='changeTooltipMessage(this,&quot;" + tooltipLabel + "&quot;)' data-clipboard-klippy><div><img class='octicon' src='"+image+"' alt='Copy'></div></button>";
@@ -57,8 +60,9 @@ function initKlippy(handSide, headSide, klippyColor, klippyOpacity, tooltipLabel
       var klippyParent = klippy.parentElement;
       var paddingParent = window.getComputedStyle(klippyParent).getPropertyValue('padding-' + handSide);
       var icon = klippy.querySelector('.octicon');
-      icon.style.width = paddingParent;
+      icon.style.width = paddingParent * icon_size_factor;
       icon.style.verticalAlign = headSide;
+      klippy.style.padding = icon_padding
       if (handSide === 'right') {
         klippy.style.right = '0';
         klippy.className += ' tooltipped-w';
